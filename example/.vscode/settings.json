@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/02d01613-5138-465c-84cf-68fdd40f1e71/resourceGroups/appsvc_linux_swedencentral/providers/Microsoft.Web/sites/fido-aadb2c-webapi",
+    "appService.deploySubpath": "."
+}

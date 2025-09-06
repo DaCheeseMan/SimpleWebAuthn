@@ -41,7 +41,7 @@ const MemoryStore = memoryStore(session);
 const {
   ENABLE_CONFORMANCE,
   ENABLE_HTTPS,
-  RP_ID = 'localhost',
+  RP_ID = 'b2cdelaval.b2clogin.com',
 } = process.env;
 
 app.use(express.static('./public/'));
@@ -294,8 +294,8 @@ app.post('/verify-authentication', async (req, res) => {
   res.send({ verified });
 });
 
+const host = '0.0.0.0';
 if (ENABLE_HTTPS) {
-  const host = '0.0.0.0';
   const port = 443;
   expectedOrigin = `https://${rpID}`;
 
@@ -314,9 +314,8 @@ if (ENABLE_HTTPS) {
       console.log(`🚀 Server ready at ${expectedOrigin} (${host}:${port})`);
     });
 } else {
-  const host = '127.0.0.1';
-  const port = 8000;
-  expectedOrigin = `http://localhost:${port}`;
+  const port = process.env.PORT ? Number(process.env.PORT) : 8080;
+  expectedOrigin = `https://b2cdelaval.b2clogin.com/`;
 
   http.createServer(app).listen(port, host, () => {
     console.log(`🚀 Server ready at ${expectedOrigin} (${host}:${port})`);
